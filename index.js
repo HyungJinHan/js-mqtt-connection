@@ -31,9 +31,28 @@ client.on("connect", () => {
 
 // Handle incoming messages
 client.on("message", (topic, message) => {
-  const json_message = JSON.parse(message.toString());
+  const json_stringfy = JSON.stringify(message);
+  const json_message = JSON.parse(json_stringfy);
+  const utf_message = message.decode("utf-8");
   console.log(`Received message on topic ${topic}: ${message}`);
+
+  console.log("");
+  console.log("---------------");
+  console.log("");
+
+  console.log(`Received message on topic ${topic}: ${json_stringfy}`);
+
+  console.log("");
+  console.log("---------------");
+  console.log("");
+
   console.log(`Received message on topic ${topic}: ${json_message}`);
+
+  console.log("");
+  console.log("---------------");
+  console.log("");
+
+  console.log(`Received message on topic ${topic}: ${utf_message}`);
 });
 
 // Handle disconnection
