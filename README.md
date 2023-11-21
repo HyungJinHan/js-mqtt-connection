@@ -13,7 +13,7 @@
 
 ### 기본 세팅
 
-- `MQTT`는 `AWS Ito Core` 서비스를 사용
+- `MQTT`는 `AWS IoT Core` 서비스를 사용
 
   - 별도의 테스트용 사물 생성을 통해 해당 `MQTT Broker`에 필요한 보안 키 발급
   - 엔드포인트와 포트는 AWS를 통해 생성된 url을 사용
