@@ -98,8 +98,6 @@
 
   </details>
 
-  <br/>
-
   <details>
     <summary>결과 확인하기</summary>
 
