@@ -35,14 +35,7 @@ client.on("message", (topic, message) => {
   // const json_stringfy_message = JSON.stringify(message);
   // const json_parse_message = JSON.parse(json_stringfy_message);
   // const toString_json_parse_message = JSON.parse(toString_message);
-
-  console.log(`Received message on topic ${topic}: ${toString_message}`);
-
-  console.log("");
-  console.log("---------------");
-  console.log("");
-
-  console.log(`Received message on topic ${topic}: ${message}`);
+  return console.log(`Received message on topic ${topic}: ${toString_message}`);
 });
 
 // Handle disconnection
