@@ -136,3 +136,59 @@
   - 추후 더 확인이 필요
 
 - 데이터 파싱을 통한 필요 데이터만을 추출하는 방식 연구가 필요
+
+<br/>
+
+# AWS JavaScript SDK v3 Test (DynamoDB)
+
+### install
+
+```bash
+# --- v3 ---
+npm i @aws-sdk/client-dynamodb
+# or
+yarn add @aws-sdk/client-dynamodb
+
+# --- v2 ---
+npm i @aws-sdk
+# or
+yarn add @aws-sdk
+```
+
+### `DynamoDB AttributeValue`
+
+- `L` (`List`)
+
+  - `"L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N": "3.14159"}]`
+
+  > Type: String to AttributeValue objects
+
+- `M` (`Map`)
+
+  - `"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}`
+
+  > Type: String to AttributeValue object map
+
+- `N` (`Number`)
+
+  - `"N": "123.45"`
+
+  > Type: <u>**_Strings_**</u>
+
+- `NS` (`Number Set`)
+
+  - `"NS": ["42.2", "-19", "7.5", "3.14"]`
+
+  > Type: Array of <u>**_Strings_**</u>
+
+- `NULL` (`Null`)
+
+  - `"NULL": true`
+
+  > Type: Boolean
+
+- `S` (`String`)
+
+  - `"SS": ["Giraffe", "Hippo", "Zebra"]`
+
+  > Type: Array of Strings
