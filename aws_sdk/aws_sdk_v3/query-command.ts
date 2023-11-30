@@ -4,11 +4,11 @@ import {
   IQueryInput,
   IQueryItem,
 } from "../../interface";
+import "dotenv/config";
+
 const { DynamoDBClient, QueryCommand } = require("@aws-sdk/client-dynamodb");
 
-require("dotenv").config();
-
-const REGION: string | undefined = process.env.AWS_REGION;
+const REGION: string = process.env.AWS_REGION!;
 
 const NOW: Date = new Date();
 const TODAY: number = NOW.getTime();
