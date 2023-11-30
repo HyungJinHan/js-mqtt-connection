@@ -52,9 +52,12 @@ const PAYLOAD_MAP: IPayloadFunc = (items) => {
       const oxygen_mpl_unit = item.Payload.M.oxygen_mpl.M.unit.S;
       const oxygen_per_value = toFixedFunc(item.Payload.M.oxygen_per.M.value.N);
       const oxygen_per_unit = item.Payload.M.oxygen_per.M.unit.S;
+      const oxygen_lat = item.Payload.M.coordinates.M.latitude.N;
+      const oxygen_lon = item.Payload.M.coordinates.M.longitude.N;
 
       return console.log({
-        measure_time: measure_time,
+        measure_time: parseInt(measure_time),
+        coordinates: `${oxygen_lat}, ${oxygen_lon}`,
         oxygen_mpl: `${oxygen_mpl_value}${oxygen_mpl_unit}`,
         oxygen_per: `${oxygen_per_value}${oxygen_per_unit}`,
       });
