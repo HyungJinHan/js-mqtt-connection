@@ -6,9 +6,9 @@ require("dotenv").config();
 const client = mqtt.connect(
   `mqtts://${process.env.AWS_ENDPOINT}:${process.env.AWS_PORT}`,
   {
-    key: fs.readFileSync("./mqtt_key/private.pem.key"),
-    cert: fs.readFileSync("./mqtt_key/certification.crt"),
-    ca: fs.readFileSync("./mqtt_key/root_ca.pem"),
+    key: fs.readFileSync("./private.pem.key"),
+    cert: fs.readFileSync("./certification.crt"),
+    ca: fs.readFileSync("./root_ca.pem"),
     protocolId: "MQTT",
     protocolVersion: 5,
   }

@@ -1,0 +1,23 @@
+const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+
+require("dotenv").config();
+
+const REGION = process.env.AWS_REGION;
+const CURRENT_TIME = new Date();
+const MS_Time = CURRENT_TIME.getTime();
+
+const listTable = async () => {
+  const client = new DynamoDB({ region: REGION });
+
+  try {
+    const results = await client.listTables({});
+    return console.log(
+      { "listTables (TableNames)": results.TableNames },
+      "\n\n"
+    );
+  } catch (err) {
+    return console.error(err);
+  }
+};
+
+listTable();
