@@ -1,4 +1,9 @@
-import { IQueryInput, IQueryItem } from "../../interface";
+import {
+  IPayloadFunc,
+  IQueryFunc,
+  IQueryInput,
+  IQueryItem,
+} from "../../interface";
 const { DynamoDBClient, QueryCommand } = require("@aws-sdk/client-dynamodb");
 
 require("dotenv").config();
@@ -38,7 +43,7 @@ INPUT_VALUES = {
   TableName: TABLE,
 };
 
-const PAYLOAD_MAP = (items: any[]): void => {
+const PAYLOAD_MAP: IPayloadFunc = (items) => {
   items.map((item: IQueryItem) => {
     const toFixedFunc = (value: string) => parseFloat(value).toFixed(2);
     try {
@@ -59,7 +64,7 @@ const PAYLOAD_MAP = (items: any[]): void => {
   });
 };
 
-const queryCommand = async (): Promise<void> => {
+const queryCommand: IQueryFunc = async () => {
   const client: any = new DynamoDBClient({ region: REGION });
   const command: any = new QueryCommand({ ...INPUT_VALUES });
 

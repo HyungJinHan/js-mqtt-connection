@@ -63,3 +63,11 @@ export interface IQueryItem {
   device_id: { S: string };
   measure_time: { N: string };
 }
+
+export interface IPayloadFunc {
+  (items: any[]): void;
+}
+
+export interface IQueryFunc {
+  (): Promise<void>;
+}
