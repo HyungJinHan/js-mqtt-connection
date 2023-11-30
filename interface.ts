@@ -1,3 +1,12 @@
+type TKeyConditions =
+  | "EQ"
+  | "LE"
+  | "LT"
+  | "GE"
+  | "GT"
+  | "BEGINS_WITH"
+  | "BETWEEN";
+
 export interface IQueryInput {
   ExpressionAttributeNames?: {
     "#id": string;
@@ -30,15 +39,7 @@ export interface IQueryInput {
     S?: string;
     SS?: string[];
   };
-  KeyConditions?: {
-    EQ?: string;
-    LE?: string;
-    LT?: string;
-    GE?: string;
-    GT?: string;
-    BEGINS_WITH?: string;
-    BETWEEN?: string;
-  };
+  KeyConditions?: TKeyConditions;
   KeyConditionExpression?: string;
   ScanIndexForward?: boolean;
   Limit?: number;
