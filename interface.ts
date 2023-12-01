@@ -55,16 +55,28 @@ export interface IQueryItem {
     M: {
       measure_time: { N: string };
       oxygen_mpl: {
-        M: { value: { readonly N: string }; unit: { readonly S: string } };
+        M: {
+          value: { readonly N: string };
+          unit: { readonly S: string };
+        };
       };
       oxygen_per: {
-        M: { value: { readonly N: string }; unit: { readonly S: string } };
+        M: {
+          value: { readonly N: string };
+          unit: { readonly S: string };
+        };
       };
       oxygen_ppm: {
-        M: { value: { readonly N: string }; unit: { readonly S: string } };
+        M: {
+          value: { readonly N: string };
+          unit: { readonly S: string };
+        };
       };
       temperature: {
-        M: { value: { readonly N: string }; unit: { readonly S: string } };
+        M: {
+          value: { readonly N: string };
+          unit: { readonly S: string };
+        };
       };
       coordinates: {
         M: {
@@ -74,8 +86,8 @@ export interface IQueryItem {
       };
     };
   };
-  device_id: { readonly S: string };
-  measure_time: { readonly N: string };
+  device_id: { readonly S: string }; // 파티션 키
+  measure_time: { readonly N: string }; // 정렬 키
 }
 
 export interface IPayloadFunc {
