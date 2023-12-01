@@ -1,10 +1,8 @@
-import logo from "./logo.svg";
 import mqtt from "mqtt";
 import "./App.css";
+import logo from "./logo.svg";
 
 function App() {
-  const reader = new FileReader();
-
   const mqttConnect = () => {
     console.log("Connect");
 
