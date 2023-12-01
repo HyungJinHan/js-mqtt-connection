@@ -9,9 +9,9 @@ function App() {
     const client = mqtt.connect(
       `mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com:8883`,
       {
-        // key: reader.readAsText("/mqtt/private.pem.key"),
-        // cert: reader.readAsText("/mqtt/certification.crt"),
-        // ca: reader.readAsText("/mqtt/root_ca.pem"),
+        // key: fs.readFileSync("/mqtt/private.pem.key"),
+        // cert: fs.readFileSync("/mqtt/certification.crt"),
+        // ca: fs.readFileSync("/mqtt/root_ca.pem"),
         protocolId: "MQTT",
         protocolVersion: 5,
       }
