@@ -14,8 +14,6 @@ const client = mqtt.connect(
   }
 );
 
-console.log(client);
-
 client.on("connect", () => {
   console.log("Connected to MQTT Broker");
 
