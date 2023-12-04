@@ -14,6 +14,8 @@ const client = mqtt.connect(
   }
 );
 
+console.log(client);
+
 client.on("connect", () => {
   console.log("Connected to MQTT Broker");
 
@@ -32,12 +34,6 @@ client.on("connect", () => {
 // Handle incoming messages
 client.on("message", (topic, message) => {
   const toString_message = message.toString();
-  // const json_stringfy_message = JSON.stringify(message);
-  // const json_parse_message = JSON.parse(json_stringfy_message);
-  // const toString_json_parse_message = JSON.parse(toString_message);
-  document.querySelector(
-    "h1"
-  ).innerHTML = `Received message on "${topic}": ${toString_message}\n`;
   return console.log(`Received message on "${topic}": ${toString_message}\n`);
 });
 

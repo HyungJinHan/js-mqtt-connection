@@ -1,21 +1,26 @@
-import mqtt from "mqtt";
+import mqtt from "mqtt/dist/mqtt.esm";
 import "./App.css";
 import logo from "./logo.svg";
 
 function App() {
-  const mqttConnect = () => {
-    console.log("Connect");
+  const client = mqtt.connect(
+    // "mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com",
+    {
+      keyPath: "./mqtt/private.pem.key",
+      certPath: "./mqtt/certification.crt",
+      caPaths: "./mqtt/root_ca.pem",
+      hostname: "a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com",
+      protocol: "mqtts",
+      // protocolId: "MQTT",
+      // protocolVersion: 5,
+      // port: 8883,
+      // defaultProtocol: "mqtts",
+    }
+  );
 
-    const client = mqtt.connect(
-      `mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com:8883`,
-      {
-        // key: fs.readFileSync("/mqtt/private.pem.key"),
-        // cert: fs.readFileSync("/mqtt/certification.crt"),
-        // ca: fs.readFileSync("/mqtt/root_ca.pem"),
-        protocolId: "MQTT",
-        protocolVersion: 5,
-      }
-    );
+  const mqttConnect = async () => {
+    console.log("Connect");
+    console.log(client);
 
     client.on("connect", () => {
       console.log("Connected to MQTT Broker");
@@ -35,9 +40,6 @@ function App() {
     // Handle incoming messages
     client.on("message", (topic, message) => {
       const toString_message = message.toString();
-      // const json_stringfy_message = JSON.stringify(message);
-      // const json_parse_message = JSON.parse(json_stringfy_message);
-      // const toString_json_parse_message = JSON.parse(toString_message);
       return console.log(
         `Received message on topic ${topic}: ${toString_message}`
       );
@@ -51,17 +53,6 @@ function App() {
 
   const mqttDisconnect = () => {
     console.log("Disconnect");
-
-    const client = mqtt.connect(
-      `mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com:8883`,
-      {
-        // key: fs.readFileSync("none-react/mqtt/private.pem.key"),
-        // cert: fs.readFileSync("none-react/mqtt/certification.crt"),
-        // ca: fs.readFileSync("none-react/mqtt/root_ca.pem"),
-        protocolId: "MQTT",
-        protocolVersion: 5,
-      }
-    );
 
     // Handle disconnection
     client.on("close", () => {
@@ -78,8 +69,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => mqttConnect()}>MQTT Connect</button>
-        <button onClick={() => mqttDisconnect()}>MQTT Disconnect</button>
+        <div>
+          <button onClick={() => mqttConnect()}>MQTT Connect</button>
+          <button onClick={() => mqttDisconnect()}>MQTT Disconnect</button>
+        </div>
       </header>
     </div>
   );
