@@ -4,17 +4,15 @@ const fs = require("fs");
 require("dotenv").config();
 
 const client = mqtt.connect(
-  `mqtts://${process.env.AWS_ENDPOINT}:${process.env.AWS_PORT}`,
+  "mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com:8883",
   {
-    key: fs.readFileSync("./private.pem.key"),
-    cert: fs.readFileSync("./certification.crt"),
-    ca: fs.readFileSync("./root_ca.pem"),
+    key: fs.readFileSync("mqtt/private.pem.key"),
+    cert: fs.readFileSync("mqtt/certification.crt"),
+    ca: fs.readFileSync("mqtt/root_ca.pem"),
     protocolId: "MQTT",
     protocolVersion: 5,
   }
 );
-
-console.log(fs.readFileSync("./private.pem.key"));
 
 client.on("connect", () => {
   console.log("Connected to MQTT Broker");
@@ -25,7 +23,7 @@ client.on("connect", () => {
   topics.map((topic) => {
     return client.subscribe(topic, (err) => {
       if (!err) {
-        console.log(`Subscribed to ${topic}`);
+        console.log(`Subscribed to "${topic}"\n`);
       }
     });
   });
@@ -37,7 +35,10 @@ client.on("message", (topic, message) => {
   // const json_stringfy_message = JSON.stringify(message);
   // const json_parse_message = JSON.parse(json_stringfy_message);
   // const toString_json_parse_message = JSON.parse(toString_message);
-  return console.log(`Received message on topic ${topic}: ${toString_message}`);
+  document.querySelector(
+    "h1"
+  ).innerHTML = `Received message on "${topic}": ${toString_message}\n`;
+  return console.log(`Received message on "${topic}": ${toString_message}\n`);
 });
 
 // Handle disconnection
