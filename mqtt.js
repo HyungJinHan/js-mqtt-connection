@@ -6,9 +6,9 @@ require("dotenv").config();
 const client = mqtt.connect(
   "mqtts://a3jmtb9lvgjr1c-ats.iot.ap-northeast-2.amazonaws.com:8883",
   {
-    key: fs.readFileSync("mqtt/private.pem.key"),
-    cert: fs.readFileSync("mqtt/certification.crt"),
-    ca: fs.readFileSync("mqtt/root_ca.pem"),
+    key: fs.readFileSync("key/private.pem.key"),
+    cert: fs.readFileSync("key/certification.crt"),
+    ca: fs.readFileSync("key/root_ca.pem"),
     protocolId: "MQTT",
     protocolVersion: 5,
   }
