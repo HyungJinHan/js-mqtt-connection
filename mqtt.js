@@ -17,7 +17,8 @@ const client = mqtt.connect(
 client.on("connect", () => {
   console.log("Connected to MQTT Broker");
 
-  const default_topic = "odn/+/sensors";
+  // const default_topic = "odn/+/sensors";
+  const default_topic = "odn/+/sensors/#";
   const topics = [`${default_topic}`];
 
   topics.map((topic) => {
